@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -57,13 +58,17 @@ public class JwtProvider {
 
 	public boolean validateToken(final String token) {
 		try {
-			Jwts.parser()
+			Jws<Claims> claims = Jwts.parser()
 				.verifyWith(getSignInKey())
 				.build()
 				.parseSignedClaims(token);
 			log.info("true");
-			return true;
+			return !claims.getPayload().getExpiration().before(new Date());
 		} catch (Exception e) {
+			/* ExpiredJwtException, UnsupportedJwtException, MalformedJwtException,
+				SignatureException, IllegalArgumentException
+			 * TODO 각 예외별 로 exception handling하기
+			 * */
 			log.info("false");
 			return false;
 		}
