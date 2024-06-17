@@ -22,7 +22,7 @@ public class UserController {
 
 	private final UserService userService;
 
-	@PostMapping
+	@PostMapping("/register")
 	public Long registerUser(@RequestBody @Valid final UserSignRequest request) {
 		return userService.registerUser(request);
 	}
