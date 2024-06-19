@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.connector.api.domain.profile.request.ProfileCreateRequest;
+import com.connector.api.domain.profile.response.MyProfileResponse;
 import com.connector.api.domain.profile.response.ProfileCreateResponse;
 import com.connector.api.domain.profile.response.ProfileDetailResponse;
 import com.connector.api.domain.profile.response.ProfileListResponse;
@@ -46,19 +47,24 @@ public class ProfileController {
 		return profileService.createProfile(userId, reqeust);
 	}
 
-	@PatchMapping
-	public void updateProfile() {
+	@GetMapping("/myprofile")
+	public MyProfileResponse viewMyProfile(@CurrentUser final Long userId) {
+		return profileService.viewMyProfile(userId);
+	}
 
+	@PatchMapping
+	public void updateProfile(@CurrentUser final Long userId) {
+		profileService.updateProfile();
 	}
 
 	@PostMapping("/experiences")
-	public void addExperience() {
-
+	public void addExperience(@CurrentUser final Long userId) {
+		profileService.addExperience(userId);
 	}
 
 	@PostMapping("/educations")
-	public void addEducation() {
-
+	public void addEducation(@CurrentUser final Long userId) {
+		profileService.addEducation(userId);
 	}
 
 }
