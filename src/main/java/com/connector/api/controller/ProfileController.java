@@ -56,15 +56,5 @@ public class ProfileController {
 	public void updateProfile(@CurrentUser final Long userId, @RequestBody final ProfileRequest request) {
 		profileService.updateProfile(userId, request);
 	}
-
-	@PostMapping("/experiences")
-	public void addExperience(@CurrentUser final Long userId) {
-		profileService.addExperience(userId);
-	}
-
-	@PostMapping("/educations")
-	public void addEducation(@CurrentUser final Long userId) {
-		profileService.addEducation(userId);
-	}
-
+	
 }
