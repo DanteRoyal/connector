@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Experience {
@@ -22,4 +24,7 @@ public class Experience {
 
 	private LocalDate endDate;
 
+	@ManyToOne
+	@JoinColumn(name = "profile_id")
+	private Profile profile;
 }
