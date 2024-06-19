@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.connector.api.domain.ProfileRepository;
 import com.connector.api.domain.UserRepository;
 import com.connector.api.domain.profile.Profile;
-import com.connector.api.domain.profile.request.ProfileCreateRequest;
+import com.connector.api.domain.profile.request.ProfileRequest;
 import com.connector.api.domain.profile.response.MyProfileResponse;
 import com.connector.api.domain.profile.response.ProfileCreateResponse;
 import com.connector.api.domain.profile.response.ProfileDetailResponse;
@@ -50,7 +50,7 @@ public class ProfileService {
 		return ProfileDetailResponse.of(foundProfile);
 	}
 
-	public ProfileCreateResponse createProfile(final Long userId, final ProfileCreateRequest reqeust) {
+	public ProfileCreateResponse createProfile(final Long userId, final ProfileRequest reqeust) {
 		if (profileRepository.existsByUserId(userId)) {
 			throw new RestApiException(ProfileErrorCode.PROFILE_ALREADY_EXIST);
 		}
@@ -65,6 +65,7 @@ public class ProfileService {
 		return ProfileCreateResponse.of(newProfile);
 	}
 
+	@Transactional(readOnly = true)
 	public MyProfileResponse viewMyProfile(final Long userId) {
 		final Profile foundProfile = profileRepository.findByUserId(userId)
 			.orElseThrow(() -> new RestApiException(ProfileErrorCode.PROFILE_NOT_FOUND));
@@ -80,7 +81,11 @@ public class ProfileService {
 
 	}
 
-	public void updateProfile() {
+	public void updateProfile(final Long userId, final ProfileRequest request) {
+		final Profile foundProfile = profileRepository.findByUserId(userId)
+			.orElseThrow(() -> new RestApiException(ProfileErrorCode.PROFILE_NOT_FOUND));
+
+		foundProfile.updateProfile(request);
 	}
 
 	public void addExperience(Long userId) {

@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.connector.api.domain.BaseTimeEntity;
-
+import com.connector.api.domain.profile.request.ProfileRequest;
 import com.connector.api.domain.user.User;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -57,4 +56,12 @@ public class Profile extends BaseTimeEntity {
 	@OneToOne
 	private User user;
 
+	public void updateProfile(final ProfileRequest request) {
+		this.professionalStatus = request.getProfessionalStatus();
+		this.nickname = request.getNickname();
+		this.company = request.getCompany();
+		this.introduction = request.getIntroduction();
+		this.website = request.getWebsite();
+		this.techStacks = request.getTechStacks();
+	}
 }
