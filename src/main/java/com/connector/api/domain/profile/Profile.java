@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.connector.api.domain.BaseTimeEntity;
-import com.connector.api.domain.ProfessionalStatus;
-import com.connector.api.domain.User;
+
+import com.connector.api.domain.user.User;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
