@@ -13,6 +13,8 @@ public enum UserErrorCode implements ErrorCode {
 	EMAIL_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 이메일로 가입된 정보가 없습니다."),
 	INCORRECT_PASSWORD(HttpStatus.UNAUTHORIZED, "비밀번호가 맞지 않습니다."),
 
+	USER_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 유저가 존재하지 않습니다."),
+
 	;
 
 	private final HttpStatus httpStatus;

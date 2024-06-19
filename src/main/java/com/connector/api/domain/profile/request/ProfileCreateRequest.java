@@ -2,6 +2,7 @@ package com.connector.api.domain.profile.request;
 
 import com.connector.api.domain.profile.ProfessionalStatus;
 import com.connector.api.domain.profile.Profile;
+import com.connector.api.domain.user.User;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +18,9 @@ public class ProfileCreateRequest {
 	private String company;
 
 	@NotBlank
+	private String nickname;
+
+	@NotBlank
 	private String website;
 
 	@NotBlank
@@ -29,13 +33,15 @@ public class ProfileCreateRequest {
 	 * TODO Tech 스택 프로필정보 받아와서 넣어주기
 	 *
 	 * */
-	public Profile toEntity() {
+	public Profile toEntity(User user) {
 		return Profile.builder()
 			.professionalStatus(this.professionalStatus)
 			.company(this.company)
+			.nickname(this.nickname)
 			.website(this.website)
 			.techStacks(this.techStacks)
 			.introduction(this.introduction)
+			.user(user)
 			.build();
 	}
 

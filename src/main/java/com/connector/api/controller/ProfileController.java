@@ -14,13 +14,16 @@ import com.connector.api.domain.profile.request.ProfileCreateRequest;
 import com.connector.api.domain.profile.response.ProfileCreateResponse;
 import com.connector.api.domain.profile.response.ProfileDetailResponse;
 import com.connector.api.domain.profile.response.ProfileListResponse;
+import com.connector.api.global.auth.CurrentUser;
 import com.connector.api.service.ProfileService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequestMapping("/api/v1/profiles")
 @RequiredArgsConstructor
+@Slf4j
 @RestController
 public class ProfileController {
 
@@ -37,8 +40,10 @@ public class ProfileController {
 	}
 
 	@PostMapping
-	public ProfileCreateResponse createProfile(@RequestBody @Valid final ProfileCreateRequest reqeust) {
-		return profileService.createProfile(reqeust);
+	public ProfileCreateResponse createProfile(@CurrentUser final Long userId,
+		@RequestBody @Valid final ProfileCreateRequest reqeust) {
+		log.info("userId = {}", userId);
+		return profileService.createProfile(userId, reqeust);
 	}
 
 	@PatchMapping

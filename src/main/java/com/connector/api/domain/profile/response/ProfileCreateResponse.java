@@ -19,6 +19,9 @@ public class ProfileCreateResponse {
 	private String company;
 
 	@NotBlank
+	private String nickname;
+
+	@NotBlank
 	private String website;
 
 	@NotBlank
@@ -30,6 +33,7 @@ public class ProfileCreateResponse {
 	public static ProfileCreateResponse of(final Profile profile) {
 		return ProfileCreateResponse.builder()
 			.professionalStatus(profile.getProfessionalStatus())
+			.nickname(profile.getNickname())
 			.company(profile.getCompany())
 			.website(profile.getWebsite())
 			.techStacks(profile.getTechStacks())
