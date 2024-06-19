@@ -1,4 +1,4 @@
-package com.connector.api.domain;
+package com.connector.api.domain.profile;
 
 public enum ProfessionalStatus {
 

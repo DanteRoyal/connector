@@ -1,5 +1,6 @@
-package com.connector.api.domain;
+package com.connector.api.domain.profile.request;
 
+import com.connector.api.domain.profile.ProfessionalStatus;
 import com.connector.api.domain.profile.Profile;
 
 import jakarta.validation.constraints.NotBlank;

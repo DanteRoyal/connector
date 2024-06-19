@@ -1,4 +1,4 @@
-package com.connector.api.domain;
+package com.connector.api.domain.profile.response;
 
 import com.connector.api.domain.profile.Profile;
 

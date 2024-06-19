@@ -1,5 +1,6 @@
-package com.connector.api.domain;
+package com.connector.api.domain.profile.response;
 
+import com.connector.api.domain.profile.ProfessionalStatus;
 import com.connector.api.domain.profile.Profile;
 
 import jakarta.validation.constraints.NotBlank;
@@ -26,7 +27,7 @@ public class ProfileCreateResponse {
 	@NotBlank
 	private String introduction;
 
-	static ProfileCreateResponse of(final Profile profile) {
+	public static ProfileCreateResponse of(final Profile profile) {
 		return ProfileCreateResponse.builder()
 			.professionalStatus(profile.getProfessionalStatus())
 			.company(profile.getCompany())

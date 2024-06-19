@@ -1,4 +1,4 @@
-package com.connector.api.domain;
+package com.connector.api.domain.post;
 
 import com.connector.api.domain.profile.Profile;
 
@@ -10,19 +10,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Comment extends BaseTimeEntity{
+public class Post {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "post_id")
-	private Post post;
+	private String content;
 
 	@ManyToOne
 	@JoinColumn(name = "profile_id")
 	private Profile profile;
 
-	private String comment;
 }

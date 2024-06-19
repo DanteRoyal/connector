@@ -1,4 +1,4 @@
-package com.connector.api.domain;
+package com.connector.api.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,7 +6,12 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.connector.api.domain.ProfileRepository;
 import com.connector.api.domain.profile.Profile;
+import com.connector.api.domain.profile.request.ProfileCreateRequest;
+import com.connector.api.domain.profile.response.ProfileCreateResponse;
+import com.connector.api.domain.profile.response.ProfileDetailResponse;
+import com.connector.api.domain.profile.response.ProfileListResponse;
 
 import lombok.RequiredArgsConstructor;
 

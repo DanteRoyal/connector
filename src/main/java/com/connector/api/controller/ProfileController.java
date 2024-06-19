@@ -1,4 +1,4 @@
-package com.connector.api.domain;
+package com.connector.api.controller;
 
 import java.util.List;
 
@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.connector.api.domain.profile.request.ProfileCreateRequest;
+import com.connector.api.domain.profile.response.ProfileCreateResponse;
+import com.connector.api.domain.profile.response.ProfileDetailResponse;
+import com.connector.api.domain.profile.response.ProfileListResponse;
+import com.connector.api.service.ProfileService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
