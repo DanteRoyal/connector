@@ -24,7 +24,7 @@ public class AuthConfig implements WebMvcConfigurer {
 		registry.addInterceptor(new LoginInterceptor(jwtProvider))
 			.addPathPatterns("/api/v1/**")
 			.excludePathPatterns("/api/v1/users/register")
-			.excludePathPatterns("/api/v1/auth/login");
+			.excludePathPatterns("/api/v1/auth");
 		/*
 		 * TODO: 프로필 상세, 리스트는 어떻게 처리할지?
 		 *

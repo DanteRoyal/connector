@@ -14,6 +14,7 @@ import com.connector.api.domain.profile.response.ProfileCreateResponse;
 import com.connector.api.domain.profile.response.ProfileDetailResponse;
 import com.connector.api.domain.profile.response.ProfileListResponse;
 import com.connector.api.domain.user.User;
+import com.connector.api.global.exception.ProfileErrorCode;
 import com.connector.api.global.exception.RestApiException;
 import com.connector.api.global.exception.UserErrorCode;
 
@@ -47,6 +48,10 @@ public class ProfileService {
 	}
 
 	public ProfileCreateResponse createProfile(final Long userId, final ProfileCreateRequest reqeust) {
+		if (profileRepository.existsByUserId(userId)) {
+			throw new RestApiException(ProfileErrorCode.PROFILE_ALREADY_EXIST);
+		}
+
 		final User foundUser = userRepository.findById(userId)
 			.orElseThrow(() -> new RestApiException(UserErrorCode.USER_NOT_FOUND));
 

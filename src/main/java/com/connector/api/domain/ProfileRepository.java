@@ -7,4 +7,5 @@ import com.connector.api.domain.profile.Profile;
 
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Long> {
+	boolean existsByUserId(Long userId);
 }
