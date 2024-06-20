@@ -20,11 +20,19 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 		String token = jwtProvider.extractToken(request);
+
+		if (token == null) {
+
+		}
 		log.info("token = {}", token);
-		
+		/*
+		 *
+		 * TODO 예외처리
+		 * */
 		if (token != null && jwtProvider.validateToken(token)) {
 			return true;
 		}
+
 		return false;
 	}
 }

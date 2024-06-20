@@ -1,7 +1,6 @@
 package com.connector.api.global.auth;
 
 import org.springframework.core.MethodParameter;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -11,8 +10,9 @@ import com.connector.api.service.JwtProvider;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-@Component
+@Slf4j
 @RequiredArgsConstructor
 public class AuthArgumentResolver implements HandlerMethodArgumentResolver {
 
@@ -20,6 +20,7 @@ public class AuthArgumentResolver implements HandlerMethodArgumentResolver {
 
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
+		log.info("supprotParmeter");
 		return parameter.hasParameterAnnotation(CurrentUser.class);
 	}
 
@@ -29,9 +30,10 @@ public class AuthArgumentResolver implements HandlerMethodArgumentResolver {
 
 		final HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 		final String token = jwtProvider.extractToken(request);
-		final String id = jwtProvider.extractUserId(token);
+		final String userId = jwtProvider.extractUserId(token);
+		log.info("userId = {}", userId);
 
-		return Long.valueOf(id);
+		return Long.valueOf(userId);
 	}
 
 }

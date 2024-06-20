@@ -3,24 +3,30 @@ package com.connector.api.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.connector.api.domain.profile.request.ProfileCreateRequest;
+import com.connector.api.domain.profile.request.ProfileRequest;
+import com.connector.api.domain.profile.response.MyProfileResponse;
 import com.connector.api.domain.profile.response.ProfileCreateResponse;
 import com.connector.api.domain.profile.response.ProfileDetailResponse;
 import com.connector.api.domain.profile.response.ProfileListResponse;
+import com.connector.api.global.auth.CurrentUser;
 import com.connector.api.service.ProfileService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RequestMapping("/api/v1/profiles")
 @RequiredArgsConstructor
+@Slf4j
 @RestController
 public class ProfileController {
 
@@ -37,23 +43,21 @@ public class ProfileController {
 	}
 
 	@PostMapping
-	public ProfileCreateResponse createProfile(@RequestBody @Valid final ProfileCreateRequest reqeust) {
-		return profileService.createProfile(reqeust);
+	public ProfileCreateResponse createProfile(@CurrentUser final Long userId,
+		@RequestPart(name = "request") @Valid final ProfileRequest reqeust,
+		@RequestPart(name = "image", required = false) final MultipartFile image) {
+		log.info("userId = {}", userId);
+		return profileService.createProfile(userId, reqeust, image);
 	}
 
-	@PatchMapping
-	public void updateProfile() {
-
+	@GetMapping("/myProfile")
+	public MyProfileResponse viewMyProfile(@CurrentUser final Long userId) {
+		return profileService.viewMyProfile(userId);
 	}
 
-	@PostMapping("/experiences")
-	public void addExperience() {
-
-	}
-
-	@PostMapping("/educations")
-	public void addEducation() {
-
+	@PutMapping
+	public void updateProfile(@CurrentUser final Long userId, @RequestBody final ProfileRequest request) {
+		profileService.updateProfile(userId, request);
 	}
 
 }
