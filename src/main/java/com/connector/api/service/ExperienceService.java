@@ -3,9 +3,9 @@ package com.connector.api.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.connector.api.domain.ExperienceRepository;
 import com.connector.api.domain.ProfileRepository;
 import com.connector.api.domain.profile.Experience;
-import com.connector.api.domain.profile.ExperienceRepository;
 import com.connector.api.domain.profile.Profile;
 import com.connector.api.domain.profile.request.ExperienceRequest;
 import com.connector.api.domain.profile.response.ExperienceResponse;

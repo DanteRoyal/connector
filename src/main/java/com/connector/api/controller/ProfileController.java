@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.connector.api.domain.profile.request.ProfileRequest;
 import com.connector.api.domain.profile.response.MyProfileResponse;
@@ -42,12 +44,13 @@ public class ProfileController {
 
 	@PostMapping
 	public ProfileCreateResponse createProfile(@CurrentUser final Long userId,
-		@RequestBody @Valid final ProfileRequest reqeust) {
+		@RequestPart(name = "request") @Valid final ProfileRequest reqeust,
+		@RequestPart(name = "image", required = false) final MultipartFile image) {
 		log.info("userId = {}", userId);
-		return profileService.createProfile(userId, reqeust);
+		return profileService.createProfile(userId, reqeust, image);
 	}
 
-	@GetMapping("/myprofile")
+	@GetMapping("/myProfile")
 	public MyProfileResponse viewMyProfile(@CurrentUser final Long userId) {
 		return profileService.viewMyProfile(userId);
 	}
@@ -56,5 +59,5 @@ public class ProfileController {
 	public void updateProfile(@CurrentUser final Long userId, @RequestBody final ProfileRequest request) {
 		profileService.updateProfile(userId, request);
 	}
-	
+
 }

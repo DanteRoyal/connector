@@ -2,6 +2,7 @@ package com.connector.api.domain.profile.response;
 
 import com.connector.api.domain.profile.ProfessionalStatus;
 import com.connector.api.domain.profile.Profile;
+import com.connector.api.domain.profile.ProfileImage;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,7 +31,10 @@ public class ProfileCreateResponse {
 	@NotBlank
 	private String introduction;
 
-	public static ProfileCreateResponse of(final Profile profile) {
+	@NotBlank
+	private String profileImageUrl;
+
+	public static ProfileCreateResponse of(final Profile profile, final ProfileImage profileImage) {
 		return ProfileCreateResponse.builder()
 			.professionalStatus(profile.getProfessionalStatus())
 			.nickname(profile.getNickname())
@@ -38,6 +42,7 @@ public class ProfileCreateResponse {
 			.website(profile.getWebsite())
 			.techStacks(profile.getTechStacks())
 			.introduction(profile.getIntroduction())
+			.profileImageUrl(profileImage.getProfileImageUrl())
 			.build();
 	}
 }
