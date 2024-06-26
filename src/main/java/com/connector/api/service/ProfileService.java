@@ -111,7 +111,7 @@ public class ProfileService {
 	}
 
 	@Transactional(readOnly = true)
-	public MyProfileResponse viewMyProfile(final Long userId) {
+	public MyProfileResponse getMyProfile(final Long userId) {
 		final Profile foundProfile = profileRepository.findByUserId(userId)
 			.orElseThrow(() -> new RestApiException(ProfileErrorCode.PROFILE_NOT_FOUND));
 

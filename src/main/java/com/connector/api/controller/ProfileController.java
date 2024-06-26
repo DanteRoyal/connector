@@ -51,8 +51,8 @@ public class ProfileController {
 	}
 
 	@GetMapping("/myProfile")
-	public MyProfileResponse viewMyProfile(@CurrentUser final Long userId) {
-		return profileService.viewMyProfile(userId);
+	public MyProfileResponse getMyProfile(@CurrentUser final Long userId) {
+		return profileService.getMyProfile(userId);
 	}
 
 	@PutMapping
