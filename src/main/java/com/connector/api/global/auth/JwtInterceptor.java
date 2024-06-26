@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class LoginInterceptor implements HandlerInterceptor {
+public class JwtInterceptor implements HandlerInterceptor {
 
 	private final JwtProvider jwtProvider;
 
-	public LoginInterceptor(JwtProvider jwtProvider) {
+	public JwtInterceptor(JwtProvider jwtProvider) {
 		this.jwtProvider = jwtProvider;
 	}
 

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.connector.api.global.auth.AuthArgumentResolver;
-import com.connector.api.global.auth.LoginInterceptor;
+import com.connector.api.global.auth.JwtInterceptor;
 import com.connector.api.service.JwtProvider;
 
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class AuthConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LoginInterceptor(jwtProvider))
+		registry.addInterceptor(new JwtInterceptor(jwtProvider))
 			.addPathPatterns("/api/v1/**")
 			.excludePathPatterns("/api/v1/users/register")
 			.excludePathPatterns("/api/v1/auth");

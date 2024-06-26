@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.connector.api.domain.UserRepository;
 import com.connector.api.domain.user.User;
-import com.connector.api.domain.user.request.UserLoginRequest;
+import com.connector.api.domain.user.request.UserTokenRequest;
 import com.connector.api.global.exception.RestApiException;
 import com.connector.api.global.exception.UserErrorCode;
 
@@ -18,7 +18,7 @@ public class AuthService {
 
 	private final UserRepository userRepository;
 
-	public String login(final UserLoginRequest request) {
+	public String login(final UserTokenRequest request) {
 		final User foundUser = userRepository.findByEmail(request.getEmail())
 			.orElseThrow(() -> new RestApiException(UserErrorCode.EMAIL_NOT_FOUND));
 
