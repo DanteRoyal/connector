@@ -122,7 +122,7 @@ public class ProfileService {
 			.map(ProfileExperienceResponse::of)
 			.collect(Collectors.toList());
 
-		return new MyProfileResponse(educations, experiences);
+		return MyProfileResponse.of(foundProfile);
 
 	}
 
