@@ -3,10 +3,9 @@ package com.connector.api.domain.profile;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.connector.api.controller.profile.request.ProfileRequest;
 import com.connector.api.domain.BaseTimeEntity;
-
 import com.connector.api.domain.user.User;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -14,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -55,6 +55,20 @@ public class Profile extends BaseTimeEntity {
 	private List<Experience> experiences = new ArrayList<>();
 
 	@OneToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 
+	@OneToOne
+	@JoinColumn(name = "profileImage_id")
+	private ProfileImage profileImage;
+
+	public void updateProfile(final ProfileRequest request) {
+
+		this.professionalStatus = request.getProfessionalStatus();
+		this.nickname = request.getNickname();
+		this.company = request.getCompany();
+		this.introduction = request.getIntroduction();
+		this.website = request.getWebsite();
+		this.techStacks = request.getTechStacks();
+	}
 }
