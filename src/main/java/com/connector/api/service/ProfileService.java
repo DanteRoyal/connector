@@ -20,8 +20,6 @@ import com.connector.api.domain.profile.request.ProfileRequest;
 import com.connector.api.domain.profile.response.MyProfileResponse;
 import com.connector.api.domain.profile.response.ProfileCreateResponse;
 import com.connector.api.domain.profile.response.ProfileDetailResponse;
-import com.connector.api.domain.profile.response.ProfileEducationResponse;
-import com.connector.api.domain.profile.response.ProfileExperienceResponse;
 import com.connector.api.domain.profile.response.ProfileListResponse;
 import com.connector.api.domain.user.User;
 import com.connector.api.global.exception.ProfileErrorCode;
@@ -114,13 +112,6 @@ public class ProfileService {
 	public MyProfileResponse getMyProfile(final Long userId) {
 		final Profile foundProfile = profileRepository.findByUserId(userId)
 			.orElseThrow(() -> new RestApiException(ProfileErrorCode.PROFILE_NOT_FOUND));
-
-		final List<ProfileEducationResponse> educations = foundProfile.getEducations().stream()
-			.map(ProfileEducationResponse::of)
-			.collect(Collectors.toList());
-		final List<ProfileExperienceResponse> experiences = foundProfile.getExperiences().stream()
-			.map(ProfileExperienceResponse::of)
-			.collect(Collectors.toList());
 
 		return MyProfileResponse.of(foundProfile);
 
