@@ -3,8 +3,8 @@ package com.connector.api.domain.profile;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.connector.api.controller.profile.request.ProfileRequest;
 import com.connector.api.domain.BaseTimeEntity;
-import com.connector.api.domain.profile.request.ProfileRequest;
 import com.connector.api.domain.user.User;
 
 import jakarta.persistence.Entity;

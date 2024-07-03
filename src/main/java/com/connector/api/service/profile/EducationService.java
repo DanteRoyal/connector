@@ -1,16 +1,16 @@
-package com.connector.api.service;
+package com.connector.api.service.profile;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.connector.api.controller.profile.request.EducationRequest;
 import com.connector.api.domain.EducationRepository;
 import com.connector.api.domain.ProfileRepository;
 import com.connector.api.domain.profile.Education;
 import com.connector.api.domain.profile.Profile;
-import com.connector.api.domain.profile.request.EducationRequest;
-import com.connector.api.domain.profile.response.EducationResponse;
 import com.connector.api.global.exception.ProfileErrorCode;
 import com.connector.api.global.exception.RestApiException;
+import com.connector.api.service.profile.response.EducationResponse;
 
 import lombok.RequiredArgsConstructor;
 

@@ -2,7 +2,7 @@ package com.connector.api.domain.profile;
 
 import java.time.LocalDate;
 
-import com.connector.api.domain.profile.request.ExperienceRequest;
+import com.connector.api.controller.profile.request.ExperienceRequest;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

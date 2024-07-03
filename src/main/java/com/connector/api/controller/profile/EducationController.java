@@ -1,4 +1,4 @@
-package com.connector.api.controller;
+package com.connector.api.controller.profile;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.connector.api.domain.profile.request.EducationRequest;
-import com.connector.api.domain.profile.response.EducationResponse;
+import com.connector.api.controller.profile.request.EducationRequest;
 import com.connector.api.global.auth.CurrentUser;
-import com.connector.api.service.EducationService;
+import com.connector.api.service.profile.EducationService;
+import com.connector.api.service.profile.response.EducationResponse;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

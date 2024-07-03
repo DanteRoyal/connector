@@ -67,7 +67,7 @@ public class JwtProvider {
 		} catch (Exception e) {
 			/* ExpiredJwtException, UnsupportedJwtException, MalformedJwtException,
 				SignatureException, IllegalArgumentException
-			 * TODO 각 예외별 로 exception handling하기
+			 * TODO 각 예외별 로 exception handling하기, global execption 활용하기
 			 * */
 			log.info("false");
 			return false;

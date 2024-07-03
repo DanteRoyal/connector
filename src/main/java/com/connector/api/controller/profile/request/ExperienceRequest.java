@@ -1,4 +1,4 @@
-package com.connector.api.domain.profile.request;
+package com.connector.api.controller.profile.request;
 
 import java.time.LocalDate;
 

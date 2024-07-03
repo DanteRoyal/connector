@@ -1,4 +1,4 @@
-package com.connector.api.domain.profile.response;
+package com.connector.api.service.profile.response;
 
 import java.time.LocalDate;
 
@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class EducationResponse {
+public class ProfileEducationResponse {
 
 	private Long id;
 
@@ -23,8 +23,8 @@ public class EducationResponse {
 
 	private LocalDate endDate;
 
-	public static EducationResponse of(final Education education) {
-		return EducationResponse.builder()
+	public static ProfileEducationResponse of(final Education education) {
+		return ProfileEducationResponse.builder()
 			.id(education.getId())
 			.schoolName(education.getSchoolName())
 			.yearsInSchool(education.getYearsInSchool())

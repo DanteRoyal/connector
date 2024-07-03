@@ -1,4 +1,4 @@
-package com.connector.api.service;
+package com.connector.api.service.profile;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,20 +11,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.connector.api.controller.profile.request.ProfileRequest;
 import com.connector.api.domain.ProfileImageRepository;
 import com.connector.api.domain.ProfileRepository;
 import com.connector.api.domain.UserRepository;
 import com.connector.api.domain.profile.Profile;
 import com.connector.api.domain.profile.ProfileImage;
-import com.connector.api.domain.profile.request.ProfileRequest;
-import com.connector.api.domain.profile.response.MyProfileResponse;
-import com.connector.api.domain.profile.response.ProfileCreateResponse;
-import com.connector.api.domain.profile.response.ProfileDetailResponse;
-import com.connector.api.domain.profile.response.ProfileListResponse;
 import com.connector.api.domain.user.User;
 import com.connector.api.global.exception.ProfileErrorCode;
 import com.connector.api.global.exception.RestApiException;
 import com.connector.api.global.exception.UserErrorCode;
+import com.connector.api.service.profile.response.MyProfileResponse;
+import com.connector.api.service.profile.response.ProfileCreateResponse;
+import com.connector.api.service.profile.response.ProfileDetailResponse;
+import com.connector.api.service.profile.response.ProfileListResponse;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.connector.api.service;
+package com.connector.api.service.profile;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

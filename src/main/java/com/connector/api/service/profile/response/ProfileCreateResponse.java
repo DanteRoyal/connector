@@ -1,4 +1,4 @@
-package com.connector.api.domain.profile.response;
+package com.connector.api.service.profile.response;
 
 import com.connector.api.domain.profile.ProfessionalStatus;
 import com.connector.api.domain.profile.Profile;

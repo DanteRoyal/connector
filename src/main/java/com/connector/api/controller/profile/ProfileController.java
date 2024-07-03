@@ -1,4 +1,4 @@
-package com.connector.api.controller;
+package com.connector.api.controller.profile;
 
 import java.util.List;
 
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.connector.api.domain.profile.request.ProfileRequest;
-import com.connector.api.domain.profile.response.MyProfileResponse;
-import com.connector.api.domain.profile.response.ProfileCreateResponse;
-import com.connector.api.domain.profile.response.ProfileDetailResponse;
-import com.connector.api.domain.profile.response.ProfileListResponse;
+import com.connector.api.controller.profile.request.ProfileRequest;
 import com.connector.api.global.auth.CurrentUser;
-import com.connector.api.service.ProfileService;
+import com.connector.api.service.profile.ProfileService;
+import com.connector.api.service.profile.response.MyProfileResponse;
+import com.connector.api.service.profile.response.ProfileCreateResponse;
+import com.connector.api.service.profile.response.ProfileDetailResponse;
+import com.connector.api.service.profile.response.ProfileListResponse;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
