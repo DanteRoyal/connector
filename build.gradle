@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.connector'
 version = '0.0.1-SNAPSHOT'
-
+sdfdsfdsf
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(22)
