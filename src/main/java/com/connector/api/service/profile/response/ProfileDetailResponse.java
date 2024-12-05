@@ -1,4 +1,4 @@
-package com.connector.api.domain.profile.response;
+package com.connector.api.service.profile.response;
 
 import java.util.List;
 
